@@ -101,3 +101,73 @@ function isLoggedIn()
 	else
 		return false;
 }
+
+//Kodi per log out
+if (isset($_GET['logout'])) {
+	session_destroy();
+	unset($_SESSION['user']);
+	header("location: backend/login.php");
+}
+
+// Nese klikohet register buttoni me sukses, thirret funksioni login
+if (isset($_POST['login_btn'])) {
+	login();
+}
+
+
+
+
+
+
+// Login per user/admin
+function login(){
+	global $db, $username, $errors;
+
+	// marrja e te dhenave ne username dhe password
+	$username = e($_POST['username']);
+	$password = e($_POST['password']);
+
+	// Validimi i formes per login
+	if (empty($username)) {
+		array_push($errors, "Shkruaje username tend.");
+	}
+	if (empty($password)) {
+		array_push($errors, "Shkruaj passwordin tend.");
+	}
+
+	// fillo login nese nuk ka ndonje error.
+	if (count($errors) == 0) {
+		$password = md5($password);
+
+		$query = "SELECT * FROM users WHERE username='$username' AND password='$password' LIMIT 1";
+		$results = mysqli_query($db, $query);
+
+		if (mysqli_num_rows($results) == 1) { // Value 1 per te shikuar nese ka user ne databaze.
+			// if per te shikuar a eshte useri admin apo user
+			$logged_in_user = mysqli_fetch_assoc($results);
+			if ($logged_in_user['user_type'] == 'admin') {
+
+				$_SESSION['user'] = $logged_in_user;
+				$_SESSION['success']  = "You are now logged in";
+				header('location: admin/home.php');		  
+			}else{
+				$_SESSION['user'] = $logged_in_user;
+				$_SESSION['success']  = "You are now logged in";
+
+				header('location: ../index.php');
+			}
+		}else {
+			array_push($errors, "Username ose passwordi nuk jane korrekt.");
+		}
+	}
+}
+
+//Shikon a eshte useri admin
+function isAdmin()
+{
+	if (isset($_SESSION['user']) && $_SESSION['user']['user_type'] == 'admin' ) {
+		return true;
+	}else{
+		return false;
+	}
+}
