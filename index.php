@@ -34,6 +34,43 @@ if (!isLoggedIn()) {
 		</div>
 	</header>
 
+	<div class="header">
+		<h2>Home Page</h2>
+	</div>
+	<div class="content">
+		<!-- Mesazhi per lajmerim te login-it -->
+		<?php if (isset($_SESSION['success'])) : ?>
+			<div class="error success" >
+				<h3>
+					<?php 
+						echo $_SESSION['success']; 
+						unset($_SESSION['success']);
+					?>
+				</h3>
+			</div>
+		<?php endif ?>
+		<!-- Info per user -->
+		<div class="profile_info">
+			<img src="backend/images/welcomeMesazh.jpg" style="width: 100px; height: 70px;">
+			<!--<h3 style="text-align: center;">Login me sukses!</h3>-->
+
+			<div>
+				<?php  if (isset($_SESSION['user'])) : ?>
+					<strong><?php echo $_SESSION['user']['username']; ?></strong>
+
+					<small>
+						<i  style="color: #888;">(<?php echo ucfirst($_SESSION['user']['user_type']); ?>)</i>
+
+						<br>
+						<a href="index.php?logout='1'" style="color: red;">Log out</a>
+						&nbsp;<a href="backend/admin/home.php" style="color: red">Dashboard (admin only)</a>
+					</small>
+
+				<?php endif ?>
+			</div>
+		</div>
+	</div>
+	
 	<content>
 		<section id="sectionImg" style="
 	width: 100%;
