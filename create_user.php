@@ -1,4 +1,11 @@
-<?php include('../functions.php') ?>
+<?php include('../functions.php');
+
+if (!isAdmin()) {
+	$_SESSION['msg'] = "Nuk je admin!";
+	header('location: ../../index.php');
+}
+?>
+
 <!DOCTYPE html>
 <html>
 <head>
