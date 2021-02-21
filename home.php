@@ -64,6 +64,47 @@ if (isset($_GET['logout'])) {
 			</div>
 		</div>
 	</div>
+	
+	<!-- Kodi per listimin e userave -->
+<?php
+	$result = mysqli_query($db,"SELECT * FROM users");
+?>
+<!DOCTYPE html>
+	<html>
+		<link rel="stylesheet" href="../style.css?v=<?php echo time(); ?>">
+
+	<body>
+		<?php
+			if (mysqli_num_rows($result) > 0) { // > 0 == nese ka 1 apo me shume usera me shfaq tabelen e userave
+		?>
+	  <table>
+	  	<tr>
+	    	<td>ID</td>
+	    	<td>Emri</td>
+	    	<td>Roli</td>
+	    	<td>Email</td>
+		</tr>
+		<?php
+			$i=0;
+			while($row = mysqli_fetch_array($result)) { // Marrja e te dhenave me while loop (I mbush table rows me te dhena)
+		?>
+		<tr>
+		    <td><?php echo $row["id"]; ?></td>
+		    <td><?php echo $row["username"]; ?></td>
+		    <td><?php echo $row["user_type"]; ?></td>
+		    <td><?php echo $row["email"]; ?></td>
+		</tr>
+	<?php
+		$i++;
+		}
+	?>
+		</table>
+		<?php
+	}
+	else{
+	    echo "Nuk ka te dhena ne databaze.";
+	}
+?>
 
 	<div id="footer" style="margin-top: 2%;">
 	<p>Elhami Musliu & Valmir Jollxhiu &copy; 2020.</p>
