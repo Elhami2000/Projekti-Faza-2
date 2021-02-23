@@ -171,3 +171,36 @@ function isAdmin()
 		return false;
 	}
 }
+
+
+// -- FUNKSIONET PER PRODUKTET --
+
+function getAllProducts(){
+	global $db;
+	$query="SELECT * FROM produktet";
+	$products=mysqli_query($db, $query);
+
+	return $products;
+}
+
+function addProduct($emri, $pershkrimi, $foto){
+	global $db;
+	$query="INSERT INTO produktet(EmriProduktit, Pershkrimi, Foto) ";
+	$query.="VALUES('$emri', '$pershkrimi', '$foto')";
+	$result=mysqli_query($db,$query);
+		
+		if($result){
+				header('location: index1.php');
+			}else{
+				echo "Deshtoi ".mysqli_error($db);
+			}
+}
+
+function getProductById($id){
+	global $db;
+	$query = "SELECT * FROM produktet WHERE id= $id";
+	$result = mysqli_query($db, $query);
+
+	$product = mysqli_fetch_assoc($result);
+	return $product;
+}
