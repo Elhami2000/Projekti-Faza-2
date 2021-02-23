@@ -48,50 +48,20 @@ if (!isLoggedIn()) {
 	<a href="#"><img src="images/majt.jpg" width="100%" height="230"></a>
 
 	<div class="bay-">
+	
+<?php // shfaqim produktet nga databaza
+$produktet=getAllProducts();
+while($produkti=mysqli_fetch_assoc($produktet)):
+?>
+	<div class="pic">
+		<a href="#"><img src="images/<?php echo $produkti['Foto']; ?>" alt="pc" width="515"
+	height="300" />
+		<h4 style="text-align:center"><a href="#"><?php echo $produkti['EmriProduktit']; ?> </a></h4> 
+		<p> <?php echo $produkti['Pershkrimi']; ?> </p>
+	</div>
+<?php endwhile; ?>
 		
-		<div class="pic1">
-	<a href="#"><img src="images/0.jpg" alt="pc" width="515"
- height="300" />
-	<p><a href="#">Laptop Acer Nitro 5(AN515-54-581E), 15.6" Full HD, Intel Core i5,</br> 16GB RAM DDR4, 1TB SSD, NVIDIA GeForce RTX 2060, i zi</a></p></a>
 </div>
-
-<div class="pic2">
-	<a href="#"><img src="images/h1.jpg" alt="pc" width="515"
- height="300" />
-	<p><a href="#">Radio portative Panasonic RF-3500E9-K</a></p></a>
-</div>
-<div class="pic2">
-	<a href="#"><img src="images/h2.jpg" alt="pc" width="515"
- height="300" />
-	<p><a href="#">Orë digjitale për alarm Sencor SDC 120</a></p></a>
-</div>
-<div class="pic1">
-	<a href="#"><img src="images/h3.jpg" alt="pc" width="515"
- height="300" />
-	<p><a href="#">Radio Orava T-112</a></p></a>
-</div>
-<div class="pic2">
-	<a href="#"><img src="images/h4.jpg" alt="pc" width="515"
- height="300" />
-	<p><a href="#">Laptop Acer Nitro 7 2020 (AN715-52-571E), 15.6 ",</br> Intel Core i5, 16GB RAM, 1TB SSD,</br> INVIDIA GeForce RTX 2060 Max-Q, i zi</a></p></a>
-</div>
-<div class="pic1">
-	<a href="#"><img src="images/h5.jpg" alt="pc" width="515"
- height="300" />
-	<p><a href="#">Laptop Acer Nitro 7 2020 (AN715-52-571E), 15.6 ",</br> Intel Core i5, 16GB RAM, 1TB SSD,</br> INVIDIA GeForce RTX 2060 Max-Q, i zi</a></p></a>
-</div>
-<div class="pic2">
-	<a href="#"><img src="images/h6.jpg" alt="pc" width="515"
- height="300" />
-	<p><a href="#">Laptop Acer Nitro 7 2020 (AN715-52-571E), 15.6 ",</br> Intel Core i5, 16GB RAM, 1TB SSD,</br> INVIDIA GeForce RTX 2060 Max-Q, i zi</a></p></a>
-</div>
-<div class="pic1">
-	<a href="#"><img src="images/h7.jpg" alt="pc" width="515"
- height="300" />
-	<p><a href="#">Laptop Acer Nitro 7 2020 (AN715-52-571E), 15.6 ",</br> Intel Core i5, 16GB RAM, 1TB SSD,</br> INVIDIA GeForce RTX 2060 Max-Q, i zi</a></p></a>
-</div>
-</div>
-
 </div>
 </body>
 </html>
