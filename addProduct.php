@@ -20,7 +20,7 @@ if (!isAdmin()) {
 <link rel="stylesheet" href="css/style.css?v=<?php echo time(); ?>">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css" integrity="sha512-+4zCK9k+qNFUR5X+cKL9EIR+ZOhtIloNl9GIKS57V1MyNsYpYcUrUeQc9vNfzsWfV28IaLL3i96P9sdNyeRssA==" crossorigin="anonymous" />
 </head>
-<body>
+<body style="background: url(images/images.jpg);">
 
 <div id="all-progres">
 	<div class="profile">
@@ -40,13 +40,13 @@ if (!isAdmin()) {
 
 </div>
 
-<form enctype="multipart/form-data" method="post">
+<form enctype="multipart/form-data" id="input-group" method="post">
     <br><br><br>
-    <label for="emri">Emri i produktit:</label><br>
+    <label style="text-align: center;" id="Productp" for="emri">Emri i produktit:</label><br>
     <input type="text" name="emri" id=""><br><br>
-    <label for="pershkrimi">Pershkrimi i produktit:</label><br>
+    <label style="text-align: center;" id="Productp" for="pershkrimi">Pershkrimi i produktit:</label><br>
     <input type="text" name="pershkrimi" id=""><br><br>
-    <label for="foto">Foto:</label><br>
+    <label style="text-align: center;" id="Productp" for="foto">Foto:</label><br>
     <input type="file" name="foto" id=""><br><br>
 
     <input type="submit" value="Shto Produktin" name="shtoP">
