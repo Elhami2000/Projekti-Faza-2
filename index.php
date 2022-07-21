@@ -70,7 +70,7 @@ if (!isLoggedIn()) {
 			</div>
 		</div>
 	</div>
-	
+
 	<content>
 		<section id="sectionImg" style="
 	width: 100%;
